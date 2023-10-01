@@ -3,6 +3,13 @@ using Location.Services.Interfaces;
 
 var builder = WebApplication.CreateBuilder(args);
 
+builder.Services.AddCors(o => o.AddPolicy("MyPolicy", builder =>
+{
+    builder.AllowAnyOrigin()
+           .AllowAnyMethod()
+           .AllowAnyHeader();
+}));
+
 // Add services to the container.
 builder.Services.AddScoped<IDistanceCalculator, DistanceCalculator>();
 builder.Services.AddScoped<ILocationsService, LocationsService>();
@@ -22,6 +29,7 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseAuthorization();
+app.UseCors("MyPolicy");
 
 app.MapControllers();
 
