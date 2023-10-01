@@ -1,8 +1,8 @@
-import CompanyModel from "./CompanyModel";
 import { fetchStatus } from "./FetchStatus";
+import LocationModel from "./LocationModel";
 
 export class StateModel {
     loadingStatus: fetchStatus = fetchStatus.idle;
-    currentCompany: CompanyModel = new CompanyModel();
-    companies: CompanyModel[] = [];
+    locations: LocationModel[] = [];
+    nearestSuburb: LocationModel | null = null; 
 }

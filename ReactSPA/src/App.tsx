@@ -4,9 +4,8 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import 'react-toastify/dist/ReactToastify.css';
 import './App.css';
 
-import { ClientList } from "./components/ClientList";
-import { AddClient } from "./components/AddClient";
-import { EditClient } from "./components/EditClient";
+import { SuburbsList } from './components/SuburbsList';
+import NearestSuburb from './components/NearestSuburb';
 
 function App() {
   return (
@@ -14,13 +13,13 @@ function App() {
       <nav className="navbar navbar-expand navbar-dark bg-dark">
         <div className="navbar-nav mr-auto">
           <li className="nav-item">
-            <Link to={"/clients"} className="nav-link">
-              Clients
+            <Link to={"/suburbs"} className="nav-link">
+              Suburbs
             </Link>
           </li>
           <li className="nav-item">
-            <Link to={"/add-client"} className="nav-link">
-              Add Client
+            <Link to={"/nearest-suburb"} className="nav-link">
+              Nearest Suburb
             </Link>
           </li>
         </div>
@@ -28,10 +27,9 @@ function App() {
 
       <div className="container mt-3">
         <Routes>
-          <Route path="/" element={<ClientList />} />
-          <Route path="/clients" element={<ClientList />} />
-          <Route path="/add-client" element={<AddClient />} />
-          <Route path="/company-edit/:id" element={<EditClient />} />
+          <Route path="/" element={<SuburbsList />} />
+          <Route path="/suburbs" element={<SuburbsList />} />
+          <Route path="/nearest-suburb" element={<NearestSuburb />} />
         </Routes>
       </div>
 

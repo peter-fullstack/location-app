@@ -1,8 +1,8 @@
 import { configureStore } from '@reduxjs/toolkit'
-import companiesReducer from './slices/companiesSlice';
+import locationsReducer from './slices/LocationsSlice';
 
 const reducer = {
-   companies: companiesReducer,
+   locations: locationsReducer,
 }
 
 const store = configureStore({
