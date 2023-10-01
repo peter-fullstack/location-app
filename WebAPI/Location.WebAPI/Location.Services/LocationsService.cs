@@ -20,7 +20,7 @@ namespace Location.Services
 
             var closestLocation = locationDistances.OrderBy(l => l.Distance).First();
 
-            return model;
+            return closestLocation.SuburbLocation;
         }
     }
 }

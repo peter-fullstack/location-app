@@ -14,7 +14,7 @@ export const NearestSuburb = () => {
 
     const navigate = useNavigate();
 
-    const [coordinate, setCoordinates] = useState(new CoordinateModel());
+    const [coordinates, setCoordinates] = useState(new CoordinateModel());
 
     const dispatch = useDispatch<AppDispatch>();
 
@@ -24,7 +24,7 @@ export const NearestSuburb = () => {
 
     if (state.loadingStatus === fetchStatus.success) {
         dispatch(setLoadingStatus());
-        navigate("/");
+        //navigate("/");
     }
 
     const handleInputChange = (event: FormEvent<HTMLInputElement>) => {
@@ -33,11 +33,12 @@ export const NearestSuburb = () => {
         }
 
         const { name, value } = event.currentTarget;
-        setCoordinates({ ...coordinate, [name]: value });
+        setCoordinates({ ...coordinates, [name]: value });
     };
 
-    const saveCompany = () => {
-        dispatch(getNearestSuburb(coordinate));
+    const submitCoordinates = () => {
+        console.log(coordinates);
+        dispatch(getNearestSuburb(coordinates));
     };
 
     return (
@@ -56,7 +57,7 @@ export const NearestSuburb = () => {
                                         className="form-control"
                                         id="longitude"
                                         required
-                                        value={coordinate.longitude || 0}
+                                        value={coordinates.longitude}
                                         onChange={handleInputChange}
                                         name="longitude"
                                     />
@@ -68,7 +69,7 @@ export const NearestSuburb = () => {
                                         type="number"
                                         className="form-control"
                                         id="latitude"
-                                        value={coordinate.latitude || 0}
+                                        value={coordinates.latitude}
                                         onChange={handleInputChange}
                                         name="latitude"
                                     />
@@ -89,7 +90,7 @@ export const NearestSuburb = () => {
                 </div>
                 <div className="row">
                     <div className="col-6">
-                        <button onClick={saveCompany} className="btn btn-success" style={{ width: "200px", margin: "10px" }}>
+                        <button onClick={submitCoordinates} className="btn btn-success" style={{ width: "200px", margin: "10px" }}>
                             {state.loadingStatus === fetchStatus.loading ? (
                                 <div>
                                     <span className="spinner-border spinner-border-sm">

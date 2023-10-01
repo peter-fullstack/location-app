@@ -1,4 +1,5 @@
-﻿using Location.Services;
+﻿using Geolocation;
+using Location.Services;
 using Location.Services.Interfaces;
 using Location.Services.Models;
 using Microsoft.AspNetCore.Mvc;
@@ -13,6 +14,7 @@ namespace Location.WebApi.Controllers
 
         public LocationsController(ILocationsService locationsService) 
         {
+            LocationsData.FilePath = @".\Data\SuburbsData.json";
             _locationsService = locationsService;
         }
 
@@ -20,8 +22,18 @@ namespace Location.WebApi.Controllers
         [HttpGet]
         public ActionResult<List<SuburbLocationModel>> GetLocation()
         {
-            LocationsData.FilePath = @".\Data\SuburbsData.json";
             return Ok(LocationsData.SuburbLocations);
+        }
+
+        [HttpGet]
+        [Route("nearest")]
+        public ActionResult<List<SuburbLocationModel>> GetNearestSuburb(double longitude, double latitude)
+        {
+            var coordinate = new CoordinateModel(longitude, latitude);
+
+            var nearestSuburb = _locationsService.GetNearestSuburb(coordinate, LocationsData.SuburbLocations);
+
+            return Ok(nearestSuburb);
         }
 
     }

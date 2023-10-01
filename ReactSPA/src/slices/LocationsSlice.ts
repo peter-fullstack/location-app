@@ -24,8 +24,9 @@ export const getAllLocations = createAsyncThunk<Array<LocationModel>>(
 
 export const getNearestSuburb = createAsyncThunk<LocationModel, CoordinateModel>(
   "company-list/get-company",
-  async (id: CoordinateModel) => {
-    const res = await LocationsService.getNearestSuburb(id);
+  async (coordinates: CoordinateModel) => {
+    console.log(coordinates);
+    const res = await LocationsService.getNearestSuburb(coordinates);
 
     var model = res.data;
 

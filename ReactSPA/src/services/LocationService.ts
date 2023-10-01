@@ -6,7 +6,8 @@ const getAll = async (): Promise<any> => {
 };
 
 const getNearestSuburb = async (coordinates: CoordinateModel): Promise<any> => {
-    return http.get("/locations/nearest");
+    console.log(coordinates);
+    return http.get(`/locations/nearest?longitude=${coordinates.longitude}&latitude=${coordinates.latitude}`);
 };
 
 const LocationsService = {
