@@ -16,6 +16,9 @@ export const NearestSuburb = () => {
 
     const [coordinates, setCoordinates] = useState(new CoordinateModel());
 
+    const [longitudeValidation, setLongitudeValidation] = useState("");
+    const [latitudeValidation, setLatitudeValidation] = useState("");
+
     const dispatch = useDispatch<AppDispatch>();
 
     if (state.loadingStatus === fetchStatus.success) {
@@ -40,6 +43,16 @@ export const NearestSuburb = () => {
         console.log(coordinates);
         dispatch(getNearestSuburb(coordinates));
     };
+
+    const validateLongitude = () => {
+        // -90 to 90 degrees
+    }
+
+    const validateLatitude = () => {
+        // -180 to 180 degrees
+
+
+    }
 
     return (
         <div className="submit-form">
@@ -82,6 +95,9 @@ export const NearestSuburb = () => {
                         <div className="card">
                             <div className="card-body">
                                 <h5 className="card-title">Result</h5>
+                                {state.nearestSuburb ? (
+                                    <span>{state.nearestSuburb.suburbName}</span>
+                                ) : (null)}
 
                             </div>
 
@@ -96,11 +112,11 @@ export const NearestSuburb = () => {
                                     <span className="spinner-border spinner-border-sm">
                                     </span>
                                     <span style={{ paddingLeft: "5px" }}>
-                                        Saving ...
+                                        Processing ...
                                     </span>
                                 </div>
                             ) : (
-                                <span>Save</span>
+                                <span>Submit</span>
                             )}
                         </button>
                     </div>
@@ -108,17 +124,9 @@ export const NearestSuburb = () => {
 
                         {state.loadingStatus === fetchStatus.error ? (
                             <span>
-                                Sorry there was an error saving company details
+                                Sorry there was an error processing your request
                             </span>
-                        ) : (
-                            state.loadingStatus === fetchStatus.success ? (
-                                <span style={{ color: "green" }}>
-                                    Update successful
-                                </span>
-                            ) : (
-                                null
-                            )
-                        )}
+                        ) : (null)}
                     </div>
                 </div>
 

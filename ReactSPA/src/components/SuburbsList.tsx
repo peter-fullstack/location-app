@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch } from "../store";
-import { getNearestSuburb, setLoadingStatus, getAllLocations } from "../slices/LocationsSlice";
+import { setLoadingStatus, getAllLocations } from "../slices/LocationsSlice";
 import { fetchStatus } from "../models/FetchStatus";
 import LocationModel from "../models/LocationModel";
 

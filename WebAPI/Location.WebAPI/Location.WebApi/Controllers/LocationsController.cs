@@ -1,5 +1,4 @@
-﻿using Geolocation;
-using Location.Services;
+﻿using Location.Services;
 using Location.Services.Interfaces;
 using Location.Services.Models;
 using Microsoft.AspNetCore.Mvc;
@@ -18,7 +17,6 @@ namespace Location.WebApi.Controllers
             _locationsService = locationsService;
         }
 
-        // POST: api/CompanyDetails
         [HttpGet]
         public ActionResult<List<SuburbLocationModel>> GetLocation()
         {
