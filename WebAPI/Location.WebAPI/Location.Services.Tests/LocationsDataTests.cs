@@ -1,5 +1,3 @@
-using System.ComponentModel.DataAnnotations;
-
 namespace Location.Services.Tests
 {
     [TestClass]

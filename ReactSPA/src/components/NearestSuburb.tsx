@@ -36,22 +36,44 @@ export const NearestSuburb = () => {
         }
 
         const { name, value } = event.currentTarget;
+
+        if(name === "longitude")
+        {
+            setLongitudeValidation("");
+        }
+
+        if(name === "latitude")
+        {
+            setLatitudeValidation("");
+        }
+
         setCoordinates({ ...coordinates, [name]: value });
     };
 
     const submitCoordinates = () => {
-        console.log(coordinates);
-        dispatch(getNearestSuburb(coordinates));
+        if (validateLongitude() && validateLatitude()) {
+            dispatch(getNearestSuburb(coordinates));
+        }
     };
 
     const validateLongitude = () => {
-        // -90 to 90 degrees
+        // -180 to 180 degrees
+        if (coordinates.longitude > 180 || coordinates.longitude < -180 ) {
+            setLongitudeValidation("Longitude value must be a number between -180 and 180 degrees");
+            return false;
+        }
+
+        return true;
     }
 
     const validateLatitude = () => {
-        // -180 to 180 degrees
+        // -90 to 90 degrees
+        if (coordinates.latitude > 90 || coordinates.latitude < -90) {
+            setLatitudeValidation("Latitude value must be a number beteen -90 and 90 degrees");
+            return false;
+        }
 
-
+        return true;
     }
 
     return (
@@ -74,6 +96,7 @@ export const NearestSuburb = () => {
                                         onChange={handleInputChange}
                                         name="longitude"
                                     />
+                                    <span>{longitudeValidation}</span>
                                 </div>
 
                                 <div className="form-group">
@@ -86,6 +109,7 @@ export const NearestSuburb = () => {
                                         onChange={handleInputChange}
                                         name="latitude"
                                     />
+                                    <span>{latitudeValidation}</span>
                                 </div>
                             </div>
                         </div>
@@ -96,7 +120,7 @@ export const NearestSuburb = () => {
                             <div className="card-body">
                                 <h5 className="card-title">Result</h5>
                                 {state.nearestSuburb ? (
-                                    <span>{state.nearestSuburb.suburbName}</span>
+                                    <span style={{ color: "light-green"}}>{state.nearestSuburb.suburbName}</span>
                                 ) : (null)}
 
                             </div>

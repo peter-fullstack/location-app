@@ -3,6 +3,7 @@ using System.Text.Json;
 
 namespace Location.Services
 {
+    // Singelton implementation for list of Suburbs
     public class LocationsData
     {
         public static string FilePath = string.Empty;

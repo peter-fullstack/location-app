@@ -35,7 +35,7 @@ export const SuburbsList = () => {
     return (
 
         <div className="list row">
-            <div className="col-md-6">
+            <div className="col-md-12">
                 <h4>Suburbs</h4>
 
                 <ul className="list-group">
@@ -48,7 +48,7 @@ export const SuburbsList = () => {
                                 onClick={() => setActiveLocation(location, index)}
                                 key={index}
                             >
-                                {location.suburbName}
+                                {location.suburbName} - latitude:  {location.latitude} longitude:  {location.longitude}
                             </li>
                         ))}
                 </ul>

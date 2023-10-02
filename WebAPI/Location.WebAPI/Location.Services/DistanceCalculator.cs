@@ -1,15 +1,11 @@
 ﻿using Location.Services.Interfaces;
 using Location.Services.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Location.Services
 {
     public class DistanceCalculator: IDistanceCalculator
     {
+        // Pythagoras Theorem
         public double DistanceBetweenToPoints(CoordinateModel point1, CoordinateModel point2)
         {
             var lengthOfX = point1.X - point2.X;

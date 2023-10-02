@@ -13,7 +13,7 @@ namespace Location.WebApi.Controllers
 
         public LocationsController(ILocationsService locationsService) 
         {
-            LocationsData.FilePath = @".\Data\SuburbsData.json";
+            LocationsData.FilePath = Constants.DataFilePath;
             _locationsService = locationsService;
         }
 
