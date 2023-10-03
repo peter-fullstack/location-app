@@ -14,6 +14,7 @@ The SPA is configured to interact with the back end Web Api endpoint using axios
 
 ## ASP.NET Web Api 
 This is back end api uses a controller to handle requests and delegates processing logic to a number of services. Dependencies between different classes are handled using Dependency Injection to ensure loosely coupled code and improve testability. 
+Please note that the distance calculation used in this example assumes a flat earth (some would agree) - and uses pythagoras theorem which is valid for points within a small area such as a city but not large distances.
 
 ### Configuration
 The Web Api uses launchSettings.json to define the endpint that it exposes and makes available to clients such as the ReactSPA
